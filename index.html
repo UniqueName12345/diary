@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diary Landing Page</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #000;
+      color: #0f0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      text-decoration: underline;
+      margin-bottom: 30px;
+    }
+    #entries {
+      list-style-type: none;
+      padding: 0;
+    }
+    #entries li {
+      margin: 10px 0;
+      padding: 10px;
+      background: #111;
+      border: 1px dashed #0f0;
+    }
+    a {
+      color: cyan;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    #sortButton {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #222;
+      color: #0f0;
+      border: 2px solid #0f0;
+      cursor: pointer;
+    }
+    #sortButton:hover {
+      background: #0f0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<h1>My Diary 📖</h1>
+
+<button id="sortButton">Sort: Earliest → Latest</button>
+
+<ul id="entries">
+  <li><a href="entry/29-04-2025.html">29/04/2025 - Cloup Retribution Auto Hell</a></li>
+</ul>
+
+<script>
+  const sortButton = document.getElementById('sortButton');
+  const entriesList = document.getElementById('entries');
+
+  let ascending = true;
+
+  sortButton.addEventListener('click', () => {
+    const items = Array.from(entriesList.children);
+    items.reverse();
+    entriesList.innerHTML = '';
+    items.forEach(item => entriesList.appendChild(item));
+
+    ascending = !ascending;
+    sortButton.textContent = ascending ? "Sort: Earliest → Latest" : "Sort: Latest → Earliest";
+  });
+</script>
+
+</body>
+</html>
